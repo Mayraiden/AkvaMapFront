@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@devbookhq/splitter": "^1.4.2"
+  }
+}
