@@ -1,69 +1,70 @@
-# React + TypeScript + Vite
+# 🗺️ AkvaMapFront
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**AkvaMapFront** — картографический сервис для отображения местоположения и статуса оборудования.  
+Используется для мониторинга, планирования технического обслуживания и управления активами компании.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧩 Функциональность
 
-## Expanding the ESLint configuration
+- 📍 **Отображение точек на карте** — каждая точка содержит информацию об оборудовании, компании, дате ТО и статусе
+- 🔍 **Поиск по адресу** — с использованием Яндекс.Геокодера
+- 🖍️ **Добавление и редактирование точек** — можно указать координаты, данные аппарата, ответственного инженера и др.
+- 🟢🔴🟡 **Индикация статуса** — цвет точки зависит от статуса: обслужен, просрочен, предстоящий ТО
+- 📅 **Автоматический подсчёт статуса** — на основе даты ТО (например, если дата в сентябре и сегодня октябрь — точка становится красной)
+- 🧹 **Фильтрация** — по компаниям, инженерам, дате ТО и статусу
+- 🧭 **Кастомизация стилей карты** — через форк Mapbox
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Технологии
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- `React` / `TypeScript` — типизированный фронтенд
+- `Zustand` — управление состоянием
+- `FSD (Feature-Sliced Design)` — архитектура проекта
+- `TailwindCSS` — стилизация
+- `Mapbox` (форк) — картографическая основа
+- `Yandex Geocoder` — поиск адресов
+- `Vite` — быстрая сборка
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📌 Архитектура
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Структура проекта по FSD: `entities`, `features`, `widgets`, `pages`, `shared`
+- Модульная система: отдельные слои для работы с картой, точками, фильтрами и статусами
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 🧪 Особенности
+
+- **Реализована логика автоматического обновления статуса точек** — на основе даты ТО и текущего времени
+- **Кастомизация точек** — цвет, иконка, всплывающие окна
+- **Оптимизация отображения** — при большом количестве точек (планируется кластеризация)
+
+---
+
+## 🚀 Демо
+
+[👉 Посмотреть демо на Vercel](https://akvamapfront.vercel.app) *(если есть)*
+
+---
+
+## 💡 Что я показываю этим проектом:
+
+- Работу с геоданными и картами (Mapbox, геокодер)
+- Логику автоматического обновления статусов
+- Управление большим объемом данных на карте
+- Чистую архитектуру (FSD) и типизацию (TypeScript)
+- Умение решать бизнес-задачи через UI/UX
+
+---
+
+## 🧩 Как запустить локально
+
+```bash
+git clone https://github.com/Mayraiden/AkvaMapFront
+cd AkvaMapFront
+npm install
+npm run dev
 ```
